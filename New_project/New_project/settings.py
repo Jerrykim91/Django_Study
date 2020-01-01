@@ -14,6 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+TEMPLATE_DIRS = [os.path.join(BASE_DIR), 'templates'], # 템플릿 위치 지정 # os.path.join(BASE_DIR) = web01을 말한다. ,
 
 
 # Quick-start development settings - unsuitable for production
@@ -27,10 +28,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
-
-
- TEMPLATE_DIRS =[os.path.join(BASE_DIR), 'templates'], # 템플릿 위치 지정 # os.path.join(BASE_DIR) = web01을 말한다. ,
 # Application definition
 
 INSTALLED_APPS = [

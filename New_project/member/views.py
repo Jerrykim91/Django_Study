@@ -32,6 +32,12 @@ from django.template import Context
 # )
 #     return HttpResponse(output)
 
+# index
+def index(request):
+    return HttpResponse(" 열었다 ")
+
+
+# main_page
 def main_page(request):
     template = get_template('main_page.html')
     var = Context({
@@ -43,4 +49,8 @@ def main_page(request):
     output = template.render(var)
     return HttpResponse(output)
     #return render(request, '/member/index.html') 
-    
+
+# user_page
+def user_page(request):
+    output = "그지야"
+    return HttpResponse(output)

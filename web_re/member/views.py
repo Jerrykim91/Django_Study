@@ -17,7 +17,7 @@ from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 # 함수형태로 생성, 기호에 따라 클래스로도 생성 가능  
 
-request
+
 # index -1
 # Django에서 가장 간단한 형태의 뷰
 

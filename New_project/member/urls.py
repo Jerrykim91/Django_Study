@@ -10,7 +10,9 @@ from . import views
 # member/views.py로 부터 => html을 생성 할때 마다 경로 생성 
 # path('urls이름', views.urls이름, name = 'urls이름')
 urlpatterns = [
+    path('', views.index, name = 'index'),
     path('main_page', views.main_page, name = 'main_page'),
+    path('user_page', views.user_page, name = 'user_page'),
 ]
 
 
@@ -18,17 +20,3 @@ urlpatterns = [
 
 # html을 생성 안해도 보여지는구나~
 
-
-
-
-
-
-
-
-
-
-
-# Member
-# http://127.0.0.1:8000/member/index => 인덱스(index) 함수 동작 => views.py 에서 
-# http://127.0.0.1:8000/member/join
-# http://127.0.0.1:8000/member/login
