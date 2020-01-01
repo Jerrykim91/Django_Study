@@ -56,7 +56,7 @@ ROOT_URLCONF = 'web_re.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR), 'templates'], # 템플릿 위치 지정 # os.path.join(BASE_DIR) = web01을 말한다. 
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

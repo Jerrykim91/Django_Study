@@ -28,6 +28,9 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+
+
+ TEMPLATE_DIRS =[os.path.join(BASE_DIR), 'templates'], # 템플릿 위치 지정 # os.path.join(BASE_DIR) = web01을 말한다. ,
 # Application definition
 
 INSTALLED_APPS = [
@@ -54,7 +57,7 @@ ROOT_URLCONF = 'New_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': TEMPLATE_DIRS
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
