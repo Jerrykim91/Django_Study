@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Jerry's|Sign_Up</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.css"/>
+</head>
+
+
+<body>
+    <div class="container">
+        <h2>Sign Up Page</h2>
+            <p class="lead"> This is Sign Up Page plz Enjoy our Website!</p>
+        <form action="/member/sign_up" method="POST">
+            ID          : <input type = "text" name = "id"/><br/> 
+            PASSWORD    : <input type = "password" name = "pw"/><br/> 
+            RE-PASSWORD : <input type = "password"/><br/> 
+            NAME        : <input type = "text" name = "name"/><br/> 
+            AGE         : <input type = "text" name = "age"/><br/> 
+            <input type="submit" value= "Submit"><br/> 
+        </form>
+    </div>
+
+<hr />
+
+
+    <div class="container">
+    <h4>자연어코드작성</h4>
+    <br/>
+        <p>자 이제 어떤기능을 짜야 할까 ? <br/>
+            생각해보자!! <br/>  
+            궁금증이 하나 더 있는데 <br/>
+            1. html을 먼저 짜야할까 2. methode를 먼저 짜야할까 ? <br/>
+            => 아무래도 methode가 먼저겠지 ? <br/>
+            자 , 먼저 아이디, 비번, 이름, 나이 값을 받아오는 메소드를 짰어 <br/>
+            진짜 받아와야지 => 엑션 폼을 생성  => 데이터를 받는 코드르 짜자 <br/>
+            <br/>
+            동작이 중요해 => 폼엑션으로 무엇을 가져올지, 어떤 동작을 가지고 올 지 제대로 선언하는것이 중요해
+            그리고 사용자의 입력을 받은후에 서버에게 전달하는 서브밋을 잊으면 안되 <br/>
+        
+            자! 화면은 띄웠고 이제 해야할일은 서브밋을 했을때 ! 
+            => 홈으로 돌아가야하는데 (옵션 /팝업창 ) => redirect()을 이용해서 홈으로 돌린다. 
+        </p>
+    </div>
+</body>
+</html>
+
+
+
+

@@ -10,12 +10,11 @@ from . import views
 # member/views.py로 부터 => html을 생성 할때 마다 경로 생성 
 # path('urls이름', views.urls이름, name = 'urls이름')
 urlpatterns = [
-    path('main_page', views.main_page, name = 'main_page'), 
-    path('sign_in', views.sign_in, name = 'sign_in'),
-    path('sign_up', views.sign_up, name = 'sign_up'),
+    
+   
 ]
 
-
+# path('', views.index, name = 'index'),
 
 
 # html을 생성 안해도 보여지는구나~

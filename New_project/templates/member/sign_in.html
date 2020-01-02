@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.6">
+    <title>Jerry's|Sign_In</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.css"/>
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    <!-- Custom styles for this template -->
+    <link href="/static/css/signin.css" rel="stylesheet">
+
+</head>
+
+
+<body  class="text-center" >
+    <form class="form-signin" action="/member/sign_in" method="post" >
+        <h1 class="h1 mb-5 font-weight-normal">Sign In Page</h1>
+
+        <label for="text" class="sr-only">ID</label>
+        <input type="text" name="id" class="form-control" placeholder="ID" />
+
+        <label for="password" class="sr-only">PW</label>
+        <input type="password" name="pw" class="form-control" placeholder="PW"/>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+
+        <div style="margin-top:10px;">
+        <a href="/member/sign_up" class="btn btn-lg btn-success btn-block" role="button">Sign Up</a>
+        <p class="mt-3 mb-3 text-muted">&copy; 2017-2019</p></div style="margin-top:10px;"">
+    </form>      
+</body>
+
+</html>
+
+
+
+<!-- <h4>자연어코드작성</h4>
+<p>자 이제 어떤 기능을 짜야 할까 ? <br/>
+    생각해보자!! <br/>  
+로그인 화면에 보통 뭐가 있는지 보면 => 세세하게
+    1. 텍스트 => 로그인 => ok
+    2. 아이디 입력창  => 엑션 폼안에 입력 받는 
+    3. 비번 입력창 
+    4. 확인 버튼 
+    5. 혹시라도 계정이 없으면 회원가입 페이지로 이동  
+</p> -->
