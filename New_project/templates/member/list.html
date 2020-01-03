@@ -1,0 +1,43 @@
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Jerry's|{{title}}</title>
+ </head>
+
+
+ <body>
+<hr />     
+<div class="container-md">
+<h2> == 사용자 정보 출력 == </h2>
+<h5> 아이디 / 비밀번호 / 이름 / 나이 / 가입일  </h5>
+    {%  for one in list %}
+        {{ one.0 }}
+        {{ one.1 }}
+        {{ one.2 }}
+        {{ one.3 }}
+        {{ one.4 }}
+        <br/>
+
+    {% endfor %}
+
+</div>
+<br />
+<hr />
+<h4>뭐가 출력되야 해야할까 </h2>
+ <P> 사용자 정보 !! 사용자 정보는 어디서 얻지 ?? <br/>
+ => db가 가지고 있어!! 메소드에서 사용자 함수를 가지고오는 DB관련 생성<br/>
+ 호출하고 보여준다  <br/>
+ 힌트 return render(request,'member/list.html', {"list":data, "title":"회원목록"})<br/>
+이러게도 되는구나 .... <br/>
+for문을 써서 사전 형태로 받은 데이터를 한다 <br/>
+=> 사전에 몇개의 데이터가 출력되는지는 확인했기를 바람 <br/>
+</P>
+
+
+
+ </body>
+ </html>

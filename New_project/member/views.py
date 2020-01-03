@@ -31,6 +31,98 @@ cursor = connection.cursor()
 # 함수형태로 생성, 기호에 따라 클래스로도 생성 가능  
 
 
+# edit(5-사용자 수정) => 이중 구조로 만들어 보고 싶다 !! 
+@csrf_exempt
+def edit(request):
+    if request.method == 'GET':
+    # **사용자 정보를 받아야지 => 세션으로 => userid
+        ar = [ request.session['userid']]
+    # sql문을 작성 => age는 굳이 필요없는듯 
+        sql="""
+        SELECT * FROM MEMBER WHERE ID=%s
+        """
+        cursor.execute(sql,ar)
+        # 여기서 fetchone이냐면 => 세션은 하나 한번 정보를 주고 받으면 되기 때문에 
+        data = cursor.fetchone()
+        print(data)
+        # 사전 구조 => 사용자 페이지에 바로 전달 
+        return render(request, 'member/edit.html', {"one":data})
+    # 예외상황? 
+    elif request.method == 'POST':
+        ar =[
+            request.POST['id'],
+            request.POST['name'],
+            request.POST['age']
+        ]
+        # 업데이트문 
+        sql = """
+        UPDATE MEMBER SET NAME=%s, AGE=%s
+        WHERE ID=%s
+        """
+        cursor.execute(sql,ar)
+        return redirect('/member/main_page')
+
+#  사용자 수정은 어떤 행위를 하지 ? 
+# -> 수정이지 
+# -> 어떻게 ? => DB에 저장된 정보를 불러와서 수정하는 거지 
+# -> 어떤 방식으로 사용자를 수정하는건지 => 아이디/ 이름/ 나이만 수정 
+
+
+
+def join():
+    pass
+
+
+
+
+# main_page
+# def main_page(request):
+#     #output은 html코드로 HttpResponse에 담겨 전달 
+#     output = '''
+# <html>
+# <head><title>%s</title></head>
+# <body>
+# <h1>%s</h1><p>%s</p>
+# </body>
+# </html>
+# ''' % (
+# '제리 | 공부방',
+# '제리의 공부방에 오신 것을 환영합니다.',
+# '여기에 내용를 저장하고 공유할 수 있습니다!'
+# )
+#     return HttpResponse(output)
+
+
+# list(4-사용자 인포)
+def list(request):
+
+    #  해야하는거 
+    #  1. 정보를 얻는다 
+    #  2. 디비로 부터 
+    #  3. html 출력 
+
+    # id기준으로 오름차순
+    if request.method == 'GET':
+        # 디비 받아와야하는데 하기전에 할건없나  ?
+        # 모르겠으니가 일단 sql부터 
+        sql = """
+        SELECT * FROM MEMBER ORDER BY ID ASC
+        """
+        # SQL문 실행 
+        cursor.execute(sql)
+        # 결과값을 가져옴
+        data = cursor.fetchall()
+        # data 확인 
+        print(data)
+        # list.html을 표시하기전에 
+        # list변수에 data값을, title변수에 "회원목록" 문자를
+        # 빼 먹었네  {"list":data, "title":"회원목록"}
+        return render(request,'member/list.html', {"list":data, "title":"회원목록"})
+        # list.html을 작성하러 갑시다. =>  
+    
+
+
+
 # signin(3-로그인)
 @csrf_exempt
 def sign_in(request):
@@ -55,49 +147,20 @@ def sign_in(request):
         print('확인작업 ==> ', data ,'\n타입체크 ==> ', type(data))
         print('='*45)
 
-        # if data: # 세션설정 
-        #     request.session['userid'] = data[0]
-        #     request.session['username'] = data[1]
-        #     print('userid: ',request.session['userid'])
-        #     print('username:', request.session['username'])
-        #     return redirect('/member/index')
+        if data: # 세션설정 
+            request.session['userid'] = data[0]
+            request.session['username'] = data[1]
+            print('====>','로그인성공' )
+            print('userid: ', request.session['userid'])
+            print('username:', request.session['username'])
+            # return redirect('/member/main_page')
+        else:
+            print('로그인 실패')
+            # 팝업 메세지로 사용자에게 로그인 실패를 알려주는 코드 만들고 싶음
+            return redirect('/member/sign_in')
 
-
-        # 세션은 아직 ! 
         return redirect('/member/main_page')
         # sign_in.html을 작성하러 갑시다. =>  
-
-# main_page
-# def main_page(request):
-#     #output은 html코드로 HttpResponse에 담겨 전달 
-#     output = '''
-# <html>
-# <head><title>%s</title></head>
-# <body>
-# <h1>%s</h1><p>%s</p>
-# </body>
-# </html>
-# ''' % (
-# '제리 | 공부방',
-# '제리의 공부방에 오신 것을 환영합니다.',
-# '여기에 내용를 저장하고 공유할 수 있습니다!'
-# )
-#     return HttpResponse(output)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     
 
 
