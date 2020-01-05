@@ -1,81 +1,102 @@
-# 정리하기 
+# 장고(Django)_02
 
-##  헷갈리는 것 같아서 
-- 뷰스는  동작을 생성하는 곳     
-- ulrs는 모듈안에서 뷰에 선언된 동작을 경로화 시키는 곳      
-- **Parameter Placeholder = %s**  
-    -  이 %s 는 일반 문자열 포맷팅에 사용하는 %s, %d 등과는 다른 것임
-    - Parameter Placeholder에서는 문자열이건 숫자건 모두 %s를 사용 
-    - 문자열이라도 인용부호를 사용하지 않음 그리고 컬럼 값을 대치할때만사용가능  
-        => 그말은 테이블이나 기타 문장에서는 Placeholder를 사용할수없음 
+## - Index
+- 개발 환경<br/>
+    - 파이썬, 장고, 데이터 베이스<br/>
 
+1. 파이썬 설치<br/>
+2. 장고 설치<br/>
+3. 데이터베이스 설치<br/>
+        - SQLite(추천)<br/>
+    - 메모리에 상주하는 프로세스 없이 파일 하나에 데이터베이스를 저장 <br/>
+4. 장고 프로젝트 만들기<br/>
+    - URL과 뷰(views): 메인 페이지를 생성<br/>
+        - 페이지를 만들기 위해서는 URL로 표현된 형식을 이용해서 파이썬 함수와 애플리케이션을 연결     <br/>
+        - 뷰는 페이지를 호출하면 그 응답으로 페이지를 만들어주는 파이썬 함수   <br/>
+        - 장고 애플리케이션을 프로젝트 아래에 생성 => 애플리케이션은 뷰와 데이터 모델(data model)의 묶음     <br/>
 
----
-# DO
-- 프로젝트 생성
-  - 앱 생성 
-  - 페이지 열리나 확인 
-    => 열리면 회원가입 및 로그인 구현하기 
-     - 회원가입, 로그인 
-        - 메소드 생성 => 뷰스에서
-        - html 만들기 
-
-     - 게시판
-     - 블로그
-
-> 주석 일단 다 달고 전부 작업 한 후에 주석 제거합시다.
+5. 데이터베이스 설정 <br/>
+6. 장고 개발 서버 실행  <br/>
+7. 새로운 프로젝트 실행 <br/>
+8. 프로젝트의 데이터 베이스를 생성하고 관리 <br/>
+9. 프로젝트 상태를 테스트 <br/>
+10. 개발용 웹 서버를 실행<br/>
 
 
-# 먼저 회원가입 
-- 회원정보를 사용자로부터 받아 와야 해     
-    => 어디서 받냐면      
-    => 사용자입력 => 디비가 저장 => 동작하는 방식 (GET /POST)      
-- 회원 가입 
-    - 메소드 생성 후 html 작성      
-    -  Signup(2-회원가입) -> def sign_up(request): SQL 부분 
-    ```SQL
-            -- 테이블에 데이터를 삽입하는 코드  
-            -- 컬럼위치에 매치된 데이터를 입력 
-            -- INSERT INTO 테이블명(칼럼1,칼럼2,칼럼3,....) values(데이터1,데이터2,데이터3,......)
-        INSERT INTO MEMBER( ID, PW, AGE, NAME, JOINDATE ) 
-        VALUES(%s,%s,%s,%s, SYSDATE)
-    ```
-
-# 로그인  - 메소드 생성 후 html 작성 
-
-**로그인은 어떻게해야하나**    => LOGIN도  GET, POST 방식     
-WHY? => 사용자로 부터 값을 입력 받아야 하니까       
-
-- 의문) 사용자 입력을 디비로 받고 저장하고 다시 사용자에게 값을 던질때      
-    만약 post라는 형식의 동작이라면 그 동작을 변수에 담는데 왜 배열에 담는걸까?   
-=> 짐작으로는 담은 순서대로 출력하기 위해서 인것 같은데     
-=> 디비때문임     
-
-
-- 로그인     
-    1. 사용자가 로그인 정보 값을 던질때     
-    2. 서버가 받고    
-    3. 저장하고 (데이터 베이스에)     
-    4. 그걸 다시 읽고      
-    5. pass / no pass    
-
--  signin(3-로그인) -> def sign_in(request): SQL 부분 
-```SQL
--- 직역 | 멤버라는 테이블로부터 아이디와 네임을 선택한다 
--- 근데 그게 전달 받은 ID,PW의 줄에 있는 네임과 아이디 
-SELECT ID, NAME FROM MEMBER 
-WHERE ID = %s AND PW = %s
-
+## 기본 구조
+```py
+Django web project
+    ㄴ Web01
+        - 프로젝트 설계를 위한 python 패키지들 이저장    
+        ㄴ __init__.py 
+            - 디렉토리를 패키지처럼 다루라고 알려주는 파일 
+            => 이름이 중복되는것을 피하게 하는 모듈의 모음 
+        ㄴ setting.py 
+            - 프로젝트의 환경 및 구성을 저장
+            - 환경 설정이 어떻게 동작하는지 확인
+            - 데이터베이스, 사이트 언어 설정 
+        ㄴ urls.py
+            - 설정파일 
+                - 현재 Django project 의 URL 선언을 저장 => 사이트의 '목차'
+                - url주소와 장고의 기능을 연결 시켜주는 역활 
+                - 장고의 강력한 기능**
+    ㄴ manage.py
+        - 프로젝트를 관리하는 스크립트 admin.py와 코드를 공유 
 ```
-- Cursor_ 커서 
-
-    - ``` fetchall() ``` 메서드 
-        - 모든 데이터를 한꺼번에 클라이언트로 가지고 올때 사용
-    - ``` fetchone() ``` 메서드 
-        - 한 번 호출에 하나의 row만을 가져올 때 사용
-        - 여러번 호출을 하면 호출 할 때마다 한 row씩 데이터를 가지고 옴
-
-- ** 로그인시에 아이디나 비밀번호를 한번치면 홈으로 바로 넘어가던 오류를 수정** 
 
 
-# 사용자 리스트 
+### - Step 01 
+- Newproject 생성    
+    - conda istall Django  =>  Django 모듈 설치(없다면)    
+    - Newproject 생성     
+        - 확인 할 부분!! manage.py있는지 확인    
+        - 잘 생성 되었으면 생성한 프로젝트 폴더로 이동    
+
+
+```py   
+# Istall Django Web
+$ cd C:\web_project\web01
+- 설치 하고자 했던 위치로 폴더 이동     
+    - 예시) 자기 폴더 위치 C에 생성하시오 => 빠르고 편함     
+        - My_Path01 [C:\web_project\web01]     
+        - My_Path02 [C:\web_project\web_re]     
+ 
+# Django 모듈 설치( if 모듈이 없다면! 설치_conda OR pip whatever you want)
+    $ conda install django     
+
+# Newproject 생성(원하는 이름(whatever you want)의 폴더를 생성)
+    $ django-admin startproject Newproject   
+
+# 확인 할 부분 !! manage.py있는지 확인 잘 생성 되었으면 다음 step으로 이동 
+    # 생성한 프로젝트 폴더로 이동
+    $ cd Newproject 
+
+# Board 앱 생성(여러개 생성 가능)
+    $ django-admin startapp board
+# 의문사항 => 직접해보자 
+    $ django-admin.py startapp member  => 어플리케이션 생성 
+    $ django-admin startproject member => 프로젝트폴더 생성시에 사용
+# Member 앱 생성
+    $ django-admin startapp member 
+# Django 서버 구동(http://127.0.0.1:8000/)
+    $ python manage.py runserver 
+
+# DB 연동=> SET IT UP**
+    $ python manage.py migrate
+```
+
+
+### - Step 02 
+ - 사용자가 상위 URL(http://127.0.0.1:8000)을 요청 <br/>
+    => 장고는 urls.py에 정의된 urlpatterns에서 요청(request)값과 일치하는 URL을 찾아 낸다 
+ - URL를 찾아내면 그에 해당하는 뷰를 호출<br/>
+ - 파이썬 함수인 뷰는 사용자 브라우저가 보낸 데이터를 request객체로 받아서 HttpResponse객체에 페이지 내용을 담아서 반환<br/>
+
+
+### - Step 03
+
+
+2. cursor() => 함수 확인 
+
+
+
