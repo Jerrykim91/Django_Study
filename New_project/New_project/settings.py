@@ -27,10 +27,13 @@ SECRET_KEY = 'h8x@=0yiiq6*$+!x5(*_hfmx)+)(uvn09q4jxk5f1l+lfak-m('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# 적절하게 지정 => 개발모드에는 자동으로 부여 
+# 운영 모드인경우 서버의 IP나 도메인을 지정 
 ALLOWED_HOSTS = []
 
 # Application definition
-
+# 프로젝트에 포함되는 어플리케이션을 등록 => 모듈명만등록해도 됨
+# 설정 클래스를 찾을수 있게 모듈 경로까지 포함하여 등록하기를 추천 
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -125,14 +128,15 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
 LANGUAGE_CODE = 'ko-kr'
-
-TIME_ZONE = 'UTC'
+# 한국 시간 TIME_ZONE = 'Asia/Seoul'
+TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
 
 USE_L10N = True
-
-USE_TZ = True
+# 장고가 알아서 시간대를 조정 => 섬머타임 걸리니까 
+# 한국은 아시아로 타임존을 설정해두고 => USE_TZ = False로 해두는게 좋음
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)

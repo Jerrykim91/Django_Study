@@ -9,17 +9,12 @@ from . import views
 # 경로 생성 => 함수형 뷰를 호출 
 # member/views.py로 부터 => html을 생성 할때 마다 경로 생성 
 # path('urls이름', views.urls이름, name = 'urls이름')
+
 urlpatterns = [
-    path('join', views.join, name = 'join'),
+    # 회원 정보 관리 
     path('edit', views.edit, name = 'edit'),
     path('list', views.list, name = 'list'),
     path('sign_up', views.sign_up, name = 'sign_up'),
     path('sign_in', views.sign_in, name = 'sign_in'),
     path('main_page', views.main_page, name = 'main_page'), 
 ]
-
-
-
-
-# html을 생성 안해도 보여지는구나~
-

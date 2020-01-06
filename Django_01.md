@@ -187,9 +187,9 @@
 
 
 # Model - 데이터 베이스의 정의 
-- 모델(Model) 
+- 모델(Model) => 무조건 클래스로 생성 
     - 사용될 데이터에 대한 정의를 담고 있는 장고의 클래스     
-    - ORM 기법을 사용 => 애플리캐이션에서 사용할 데이터베이스를 크래스로 매핑 => 코딩      
+    - ORM 기법을 사용 => 애플리캐이션에서 사용할 데이터베이스를 클래스로 매핑 => 코딩      
     - 하나의 모델 클래스는 하나의 테이블에 매핑 => 모델 클래스의 속성은 테이블의 컬럼에 매핑      
 - ORM(Object Relational Mapping)    
     - 객체와 관계형데이터 베이스를 연결해주는 역활을 함     
@@ -201,6 +201,22 @@
      1. 모두 소문자로 표시 
      1. PK는 클래스에서 정의하지 않아도 장고가 자동으로 부여 => 개발자가 지정도 가능 
      1. 등등 자세한건 장고 공홈을 참조 
+
+        ```py
+        from django.db import models
+
+        class Table1(models.Model):
+            objects  = models.Manager() #vs code 오류 제거용
+
+            no      = models.AutoField(primary_key=True)
+            title   = models.CharField(max_length=200)
+            content = models.TextField() 
+            writer  = models.CharField(max_length=50)
+            hit     = models.IntegerField()
+            img     = models.BinaryField(null = True)
+            regdate = models.DateTimeField(auto_now_add=True)
+
+        ```
 
 # URLconf - URL 정의
 - 클라이언트의 요청GET => 가장 먼저요청이 들어있는 URL(urls.py)을 분석 => URL패턴과 매칭되는지를 분석           
@@ -242,12 +258,37 @@
 # 일단 여기까지  
 
 # MVT 코딩순서 
-# 애플리케이션 설계하기 
-# 프로젝트 뼈대 생성 
-    - 프로젝트 생성 
-    - 애플리케이션 생성 
-    - 프로젝트 설정 파일 변경 
-    - 기본 테이블 생성 
-    - 지금까지 작업 확인 
-#  애플리케이션 개발하기 - MODEL 코딩 
-#  애플리케이션 개발하기 - VIEW 및 TEMPLATE코딩 
+- 정해진 순서는 없음 
+    => 자신만의 코딩순서를 정하는게 좋음      
+    => 로직을 풀어나가는 데 일관성 유지 + 웹 개발 노하우 빨리 습득           
+
+- 화면설계는 뷰와 템플릿 코딩으로 연결, 테이블 설계 모델 코딩에 반영      
+- 독립적으로 개발할 수 있는 모델을 먼저 코딩      
+    => 뷰와 템플릿은 서로 영향을 미치므로 모델 이후에 같이 코딩하는것이 *일반적*  
+
+- **UI 화면을 생각하면서 로직을 풀어나가는 것이 쉬움** 그래서 보통은 템플릿을 먼저 코딩  
+- 뷰의 코딩이 매우 간단한 경우 뷰를 먼저 코딩 그다음 템플릿을 코딩(클래스형 뷰)     
+
+**일반적인 진행순서**    
+- 함수형 뷰     
+    - 모델 -> 템플릿 -> 뷰     
+- 클래스형 뷰     
+    - 모델 -> 뷰 -> 템플릿     
+    
+### 순서  
+Step - 1      
+프로젝트 뼈대 만들기      
+    - 프로젝트 및 앱 개발에 필요한 디렉토리와 파일 생성       
+Step - 2     
+모델 코딩하기
+    - 테이블 관련 사항을 개발 (models.py, admin.py)     
+Step - 3      
+URLconf 코딩하기      
+    - URL 및 뷰 매핑관계를 정의(urls.py)      
+Step - 4      
+템플릿 코딩하기      
+    - 화면 UI 개발(templates/ 디렉토리 하위의 *.html파일들)     
+Step - 5      
+뷰 코딩하기      
+    - 애플리케이션 로직 개발 (views.py 파일 )      
+

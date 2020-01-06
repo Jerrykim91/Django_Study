@@ -22,13 +22,33 @@ from django.db import connection
 # request = 사용자가 입력한 값과 기타 정보를 담고 있음 (GET, POST, request,등등..)
 
 #==========================================================
-
-# PARAMETER VAL 
+# 변수
 cursor = connection.cursor()
 
 
 # Create your views here.
 # 함수형태로 생성, 기호에 따라 클래스로도 생성 가능  
+
+#==========================================================
+
+# main_page
+# def main_page(request):
+#     #output은 html코드로 HttpResponse에 담겨 전달 
+#     output = '''
+# <html>
+# <head><title>%s</title></head>
+# <body>
+# <h1>%s</h1><p>%s</p>
+# </body>
+# </html>
+# ''' % (
+# '제리 | 공부방',
+# '제리의 공부방에 오신 것을 환영합니다.',
+# '여기에 내용를 저장하고 공유할 수 있습니다!'
+# )
+#     return HttpResponse(output)
+
+#==========================================================
 
 
 # edit(5-사용자 수정) => 이중 구조로 만들어 보고 싶다 !! 
@@ -66,31 +86,6 @@ def edit(request):
 # -> 수정이지 
 # -> 어떻게 ? => DB에 저장된 정보를 불러와서 수정하는 거지 
 # -> 어떤 방식으로 사용자를 수정하는건지 => 아이디/ 이름/ 나이만 수정 
-
-
-
-def join():
-    pass
-
-
-
-
-# main_page
-# def main_page(request):
-#     #output은 html코드로 HttpResponse에 담겨 전달 
-#     output = '''
-# <html>
-# <head><title>%s</title></head>
-# <body>
-# <h1>%s</h1><p>%s</p>
-# </body>
-# </html>
-# ''' % (
-# '제리 | 공부방',
-# '제리의 공부방에 오신 것을 환영합니다.',
-# '여기에 내용를 저장하고 공유할 수 있습니다!'
-# )
-#     return HttpResponse(output)
 
 
 # list(4-사용자 인포)
