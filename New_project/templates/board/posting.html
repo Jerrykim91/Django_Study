@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- head.html -->
+{% include "../main/head.html" %}
+
+
+
+<!-- main body -->
+<body>
+<!-- nav.html -->
+{% include "../main/nav.html" %}
+    <div class="container-md" >
+        <form action="/board/posting" method="post" enctype = "multipart/form-data" >
+            {% csrf_token %}
+            <a href="/board/list" class="btn btn-dark" style="margin-top: 5px;">목록으로</a>
+                <h1>Posting List</h1>
+                    <div class="form-inline" style="margin-bottom: 5px;">
+
+                        <label>제목</label>
+                        <input type="text" style="width:400px" placeholder="제목(title)"
+                                        class="form-control" name='title'/>
+                    </div>
+
+                    <div class="form-inline" style="margin-bottom: 5px;">
+                        <label>본문</label>
+                        <textarea rows="6" style="width:400px" placeholder="내용(content)"
+                                        class="form-control" name='content'></textarea>
+                    </div>
+
+                    <div class="form-inline" style="margin-bottom: 10px;">
+                        <label>작가</label>
+                        <input type="text" style="width:400px" placeholder="작가(writer)"
+                                        class="form-control" name='writer'/>
+                    </div>
+
+                    <div class="form-inline">
+                        <input type="submit"class="btn btn-dark" value='Posting'/>
+                    </div>
+        </form>
+    <!-- footer.html -->
+    <p>
+    - 일단은 post를 사용하니까 폼테그 열어야지!! 컨테이너 안에 폼테그를 열자 (컨테이너는 그냥 취향)<br/>
+    - 폼 테그 안에 구성할것들 작성 => 제목 , 본문 , 작성자 , 섭밋 <br/>
+    - 본문은 textarea로 구성 <br/>
+    - form-inline => 글 쓰는 박스 (스타일은 옵션 )<br/>
+    - placeholder = 워터 마크 같은거 ... <br/>
+    - 폼테그 안에  csrf_token  작성 <br/>
+    - textarea rows<br/>
+        - 텍스트 크기 기준으로 rows는 (rows값)5줄, <br/>
+        - cols는 (cols값)40자를 입력할 수 있는 공간을 제공 <br/>
+        - 입력된 텍스트가 40자 이상 입력되면 다음줄로 자동으로 내려가고 <br/>
+        - (rows값)5줄 이상넘어가면 자동 스크롤이 생김 <br/>
+
+    
+    </p>
+    {% include "../main/footer.html" %}
+    </div>
+</body>
+</html>

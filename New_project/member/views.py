@@ -26,9 +26,12 @@ from django.db import connection
 cursor = connection.cursor()
 
 
+
 # Create your views here.
 # 함수형태로 생성, 기호에 따라 클래스로도 생성 가능  
 
+# logout ( 6 - 로그아웃)
+# delete ( 5 - 사용자 삭제)
 #==========================================================
 
 # main_page
