@@ -32,6 +32,10 @@ cursor = connection.cursor()
 
 # logout ( 6 - 로그아웃)
 # delete ( 5 - 사용자 삭제)
+# def delete(request):
+#     if request.method == 'GET' or request.method == 'POST':
+#         # 세션 
+        
 #==========================================================
 
 # main_page
@@ -91,7 +95,7 @@ def edit(request):
 # -> 어떤 방식으로 사용자를 수정하는건지 => 아이디/ 이름/ 나이만 수정 
 
 
-# list(4-사용자 인포)
+# list(4-사용자 인포 목록)
 def list(request):
 
     #  해야하는거 

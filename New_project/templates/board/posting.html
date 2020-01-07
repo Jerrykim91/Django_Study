@@ -9,7 +9,7 @@
 <body>
 <!-- nav.html -->
 {% include "../main/nav.html" %}
-    <div class="container-md" >
+    <div class="container-md pt-5" >
         <form action="/board/posting" method="post" enctype = "multipart/form-data" >
             {% csrf_token %}
             <a href="/board/list" class="btn btn-dark" style="margin-top: 5px;">목록으로</a>

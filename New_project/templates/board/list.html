@@ -11,14 +11,14 @@
 <body>
 <!-- nav.html -->
 {% include "../main/nav.html" %}
-    <div class="container-md">
-        <h2> Posting List </h2>
-        <a href="/board/posting" class='btn btn-dark'>글쓰기</a></div>
-        <select class = 'form-control'>
-            <option>제목</option>
-            <option>내용</option>
-            <option>작성자</option>
-        </select>
+    <div class="container-md pt-5">
+    <h2> Posting List </h2>
+        <a href="/board/posting" class='btn btn-dark m-1'>글쓰기</a>
+            <select class = 'form-control'>
+                <option>제목</option>
+                <option>내용</option>
+                <option>작성자</option>
+            </select>
         <table board = "1" class = 'table table-hover'>
             <tr>
                 <th>번호</th>
@@ -28,22 +28,23 @@
                 <th>날짜</th>
             </tr>
         {% for one in send %}
-        <tr>
-            <td>{{one.0}}</td>
-            <td>{{one.1}}</td>
-            <td>{{one.2}}</td>
-            <td>{{one.3}}</td>
-            <td>{{one.4}}</td>
-        </tr>
+            <tr>
+                <td>{{one.0}}</td>
+                <td>{{one.1}}</td>
+                <td>{{one.2}}</td>
+                <td>{{one.3}}</td>
+                <td>{{one.4}}</td>
+            </tr>
         {% endfor %}
         </table> 
-    <p>
+         <p>
     - 일단은 제목 먼저 <br/>
     - 테이블 형태로 보여줄건데 <br/>
     - 뷰에서 데이터를 가지고 올건데 사전형태로 된 데이터 이거를 적절히 받아와야해 <br/>
     - 이터러블 성질 <br/>
     -
     </p>
+    </div>
     <!-- footer.html -->
     {% include "../main/footer.html" %}
     </div>

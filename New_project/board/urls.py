@@ -9,6 +9,9 @@ from . import views
 urlpatterns = [
 
 # 게시판 생성 
+path('content', views.content, name = 'content'),
 path('posting', views.posting, name = 'posting'),
 path('list', views.list, name = 'list')
+
+
 ]

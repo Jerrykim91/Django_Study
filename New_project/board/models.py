@@ -18,7 +18,7 @@ from django.db import models
 
 
 # Table03
-class Table03(models.Model):
+class Table9(models.Model):
     # vs code 오류 제거용 
     objects = models.Manager()
     
