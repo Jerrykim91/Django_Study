@@ -9,19 +9,84 @@
 <!-- nav.html -->
 {% include "../main/nav.html" %}
     <div class="container-md pt-5 ">
+    <h2> 본문 </h2>
+    <hr />
+    <!-- {% autoescape off %} -->
         <table class="table-hover">
-        
+            <tr>
+                <!-- 행을 먼저 만든다 => tr -->
+                <td>
+                <!-- 셀을 담는다 => td -->
+                    <th class="bg-success">ON</th> <!-- 제목을 담는다 => th -->
+                    <td> {{one.0}} </td>   <!-- 이자리에 => 뷰에서 보낸 데이터를 담는다 -->
+                </td>
+            </tr>
+            <!-- WITTER -->
+            <tr>
+                <td>
+                    <th class="bg-success">WITTER</th>
+                    <td>{{ one.1 }}</td>
+                </td>
+            </tr>
+            <!-- DATETIME -->
+            <tr>
+                <td>
+                    <th class="bg-success">DATETIME</th>
+                    <td> {{one.3}} </td>
+                </td>
+            </tr>
+            <!-- COUNT -->
+            <tr>
+                <td>
+                    <th class="bg-success">COUNT</th>
+                    <td> {COUNT} </td>
+                </td>
+            </tr>
+            <!-- COUNT -->
+            <tr>
+                <td>
+                    <th class="bg-success">TITLE</th>
+                    <td> {COUNT} </td>
+                </td>
+            </tr>
+            <!-- CONTENT -->
+            <tr>
+                <td>
+                    <th class="bg-success" >CONTENT</th>
+                    <td> {CONTENT} </td>
+                </td>
+            </tr>
+            <!-- IMAGE -->
+            <tr>
+                <td>
+                    <th class="bg-success" >IMAGE</th>
+                    <td> { 이미지 타입에 맞는 아이로 넣어줌 => 인코딩 필요 } </td>
+                    <td> <img src="#"> </td>
+               <!-- <td><img src='/static/img/ddd.png'></td> -->
+               <!-- 나중에 파이썬으로 돌리고 출력된 그래프를 출력하고 웹에 그래프를 업로드 할때 이 방식을 이용해야한다. -->
+
+                </td>
+            </tr>
+
+            
+
+
+
         </table>    
     <!-- footer.html -->
     {% include "../main/footer.html" %}
 
-    <p>
-    - 글 목록에서 글을 클릭하면 본문 내용을 열람할수있게 <br/>
-    - 여기는 글을 보여준다. => 근데 글을 누르면 어떻게 불러오는거지 ?  <br/> 
-    - 테이블에 담는다 => 제목 , 글내용, 날짜 , 작성자 등등 나열 
-    - 
-    </p>
+        <p>
+        - 글 목록에서 글을 클릭하면 본문 내용을 열람할수있게 <br/>
+        - 여기는 글을 보여준다. => 근데 글을 누르면 어떻게 불러오는거지 ?  <br/> 
+        - 테이블에 담는다 => 제목, 글내용, 날짜, 작성자 등등 나열 <br/> 
+        - 행(tr)을 먼저 만들고 그 안에 셀(td)  <br/> 
+        - 헤더, 제목이 되는 셀은 th 사용. <br/> 
+        - 테스트는 글번호를 타고 보여준다. <br/> 
+        - # list.html => 글 번호로 가는 경로를 설정  <br/> 
+        </p>
     </div>
+    <!-- {% endautoescape %} -->
 </body>
 </html>
 
