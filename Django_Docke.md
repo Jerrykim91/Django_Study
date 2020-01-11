@@ -158,16 +158,16 @@ grant connect, resource, dba to admin;
     password : 1234    
 ---
 ### 테이블 생성 
--> 테이블로 이동해서 테이블 생성 
-    이름 : MEMBER
-        - id ( 키를 가짐 - 제약조건 )
-        - pw
-        - name
-        - age (유형 : number)
-        - joindate (유형 : date)
+-> 테이블로 이동해서 테이블 생성     
+    이름 : MEMBER    
+        - id ( 키를 가짐 - 제약조건 )   
+        - pw    
+        - name      
+        - age (유형 : number)    
+        - joindate (유형 : date)    
 
-- 데이터에서 회원을 만듬 => 임의로 3개 
-    - 다 작성 후 => 변경사항 => 커밋 클릭 
+- 데이터에서 회원을 만듬 => 임의로 3개     
+    - 다 작성 후 => 변경사항 => 커밋 클릭     
 ---
 
 ### 재시작
