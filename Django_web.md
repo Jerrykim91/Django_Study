@@ -1,4 +1,6 @@
 # Django WEB 
+
+ - setting은 고유 키가 있어서 덮어 쓰기 하지 말것 ! 
 ---
 ## 장고(Django)
 
@@ -180,19 +182,7 @@ Django web project
                 - view로 이동 => 동작을 만든다(메소드 생성)  
                 - HTML 파일을 만든다.        
                     - 만약 템플릿 폴더가 없다면 먼저 생성하고 파일을 만든다.       
-                    
-        ### 의문 1. 
-        ```py
-        # index 
-        def index(request):
-        #return HttpResponse(" 열었다 ")
-        return render(request,'member/index.html') 
-        # <= 이건 왜 안됨? 복잡할때 사용한다는데 글쎄 =>DIRS 때문에
-        ```
-    - LOGIN 페이지 생성 
-        - 위 내용반복 임으로 생략하고 진행 
 
-    - Singin 페이지 생성 
 
 #### Django 에서는 기본적으로 CSRF 토큰을 이용해 CSRF공격을 방지
  > CSRF 공격이란?
