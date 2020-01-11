@@ -1,12 +1,29 @@
 # Docker_도커
-- Python에서 db 연동하기위해 도커이용
+- Python에서 db 연동하기 위해 도커이용
 
 ## 도커?
     - PC안에 가상 PC
 
-### Docker 툴박스 [다운로드](https://github.com/docker/toolbox/releases)
+**Docker 툴박스 [다운로드](https://github.com/docker/toolbox/releases)**
 
-## < Step 01 >
+
+### 자주 쓰는 명령어 
+```bash
+# 구동중인 컨테이너 실행 확인
+$ docker ps -a
+# 도커 실행 하기
+$ docker start oracle12c
+
+# Docker종료 시
+
+# stop oracle12c
+$ docker stop oracle12c
+# Docker종료시
+$ docker-machine stop
+
+```
+
+## Step 01 
 
 ### 진행 과정 
     - install         
@@ -18,53 +35,51 @@
             - 시작시     
             ``` docker-machine start ```      
             - yes    
-            - 고래 아래 그림 뜨면 진행완료  
+            - 고래 아래 그림 뜨면 진행완료      
 
-    그리고
     - Memory Check    
-        *주의 : virtual box에서 메모리를 4096으로 변경 후 설치  
-        - 적으면 도커를 종료하고 메모리값을 재 산정하고 진행     
+        - 적으면 도커를 종료하고 메모리 값을 재산정하고 진행     
             - 1GB(1024MB) => 8GB(8192MB) 변경( 선택사항 )    
-           
+         * 본인 컴사양에 따라 (4-8GB) : virtual box에서 메모리를 4096(4GB)으로 변경 후 설치       
 
     - Docker shutdown     
         - 툴박스에서      
         ``` $docker-machine stop ```
 
-``` Bash 
-# 이거 나오면 install 잘된거
+    ``` Bash 
+    # 이거 나오면 install 잘된거
 
-                        ##         .
-                  ## ## ##        ==
-               ## ## ## ## ##    ===
-           /"""""""""""""""""\___/ ===
-      ~~~ {~~ ~~~~ ~~~ ~~~~ ~~~ ~ /  ===- ~~~
-           \______ o           __/
-             \    \         __/
-              \____\_______/
+                            ##         .
+                    ## ## ##        ==
+                ## ## ## ## ##    ===
+            /"""""""""""""""""\___/ ===
+        ~~~ {~~ ~~~~ ~~~ ~~~~ ~~~ ~ /  ===- ~~~
+            \______ o           __/
+                \    \         __/
+                \____\_______/
 
-docker is configured to use the default machine with IP 192.168.99.100
-For help getting started, check out the docs at https://docs.docker.com
+    docker is configured to use the default machine with IP 192.168.99.100
+    For help getting started, check out the docs at https://docs.docker.com
 
 
-Start interactive shell
+    Start interactive shell
 
-admin@DESKTOP-THUUM3S MINGW64 /c/Program Files/Docker Toolbox
+    admin@DESKTOP-THUUM3S MINGW64 /c/Program Files/Docker Toolbox
+    ```
 
-```
+##  Step 02 
 
-## < Step 02 > 
-
-# install oracle-12c
+### install oracle-12c
 ```Bash 
 # 오라클 이미지 검색 
 $ docker search oracle-12c
+# 오라클 이미지 당겨오기 
 $ docker pull truevoly/oracle-12c
 
-# 이미지확인 
-# => 5.7GB
+# 이미지확인 => 5.7GB
 $ docker images
 ```
+
 ---
 [데이터 베이스 접속 client 프로그램 설치]    
 
@@ -75,56 +90,75 @@ $ docker images
 + sep_2
     - DB에 접속하는 프로그램     
     - sqldeveloper-19.2.0.206.2117-no-jre/sqldeveloper/sqldeveloper.exe     
-    - 실행 => 하면 자바경로 입력 (C:\Program Files\Java\jdk1.8.0_211)  
+    -실행 => 하면 자바경로 입력    
 + sep_3
     - instantclient_19_3 file > C 드라이브로 이동         
     - 내피시 > 시스템 > 고급시스템 설정 > 환경변수         
-    - 시스템 path 편집  > C 드라이브로 이동된 instantclient_19_3를 경로로 잡아줌 (C:\instantclient_19_3)    
----    
+    - 시스템 path 편집  > C 드라이브로 이동된 instantclient_19_3를 경로로 잡아줌     
+---  
 
-## 최초 시작시
+### 최초 시작시
 ```Bash 
 # 컨테이너 만들기 
 $ docker run --name oracle12c -d -p 32765:8080 -p 32764:1521 truevoly/oracle-12c
-
+# 주기적으로 log를 확인
 # 진행상황이 100%가 될때까지 기다려야함
 $ docker logs oracle12c
-# 주기적으로 log를 확인
+
+### 만약 아래 에러 발생 시 ###
+Copying database files
+1% complete
+2% complete
+4% complete
+DBCA Operation failed.
+Look at the log file "/u01/app/oracle/cfgtoollogs/dbca/xe/xe.log" for further details.
+
+=> 도커 초기설정시 가상 메모리 확장했는지 확인 해보기 
+
+- Memory Check    
+    - 적으면 도커를 종료하고 메모리값을 재산정하고 진행     
+        - 1GB(1024MB) => 8GB(8192MB) 변경( 선택사항 )    
+     * 본인 컴사양에 따라 (4-8GB) : virtual box에서 메모리를 4096(4GB)으로 변경 후 설치    
+
+##############################
 ```
-
-
-## Oracle
+  
+### Oracle 실행
 ```bash
 
-Name : 192.168.99.100_system # 도커가 가진 주소 
 # 오라클 사용자 정보 
-user : system # 최고 관리자 => 계정을 만들수 있음 
+user : system # 최고 관리자(슈퍼관리자) => 계정을 만들수 있음 
 password : oracle
 SID : xe
 
 # 오라클 접속  > 새로 만들기 
+Name : 192.168.99.100_system # 도커가 가진 주소 
 호스트 이름 :192.168.99.100
-포트        : 32764
+포트 : 32764
     => 완료 ( 도움말 위에 >>> 상태 : 성공 )
 ```
 
-- system계정 생성 후 오라클 계정 생성
+**- system계정 생성 후 오라클 계정 생성**
+
 ```sql
 create user admin IDENTIFIED by 1234;
 grant connect, resource, dba to admin;
-```
-=> 워크시트 => 위의 코드 작성후 블록 다 잡고 => 명령문 실행 =>> 커밋 
-<출력>
->>> User ADMIN이(가) 생성되었습니다.
->>> Grant을(를) 성공했습니다.
 
-#### 사용자 계정 만들기 
+-- 위의 코드 작성후 블록 다 잡고 => 명령문 실행 =>> 커밋 
+
+-- 완료하면 아래 문구가 출력 
+-- => User ADMIN이(가) 생성되었습니다. 
+-- => Grant을(를) 성공했습니다.
+```
+
+---
+### 사용자 계정 만들기     
     Name     : 192.168.99.100_admin   
     user     : admin    
     password : 1234    
-
 ---
-#### 테이블 생성 
+### 테이블 생성 
+-> 테이블로 이동해서 테이블 생성 
     이름 : MEMBER
         - id ( 키를 가짐 - 제약조건 )
         - pw
@@ -134,24 +168,26 @@ grant connect, resource, dba to admin;
 
 - 데이터에서 회원을 만듬 => 임의로 3개 
     - 다 작성 후 => 변경사항 => 커밋 클릭 
+---
 
-## 재시작
+### 재시작
 ```bash
 # 구동중인 컨테이너 실행 확인
 $ docker ps -a
 # 도커 실행 하기
 $ docker start oracle12c
 
-# conda 라이브러리 설치          
+## 라이브러리 설치 ##
+
+# conda 라이브러리 설치
 $ conda install cx_oracle
 # pip로 라이브러리 설치
 $ pip install cx_Oracle
-
 # 위의 명령어 실패 시 구동 
 $ python -m pip install cx_Oracle 
 ```
 
-## Docker종료 시
+### Docker종료 시
 ```bash
 # stop oracle12c
 $ docker stop oracle12c
@@ -159,7 +195,7 @@ $ docker stop oracle12c
 $ docker-machine stop
 ```
 
-## 필요 시 
+### 필요 시 => 삭제
 ```Bash 
 # 옵션) 데이너 실행 중지
 $ docker stop oracle12c 
@@ -183,7 +219,7 @@ print(platform.architecture())
 [오류발생시 설치 : 클릭 ](https://support.microsoft.com/en-us/help/4032938/update-for-visual-c-2013-redistributable-package)
 
 
-# Cx_Oracle 설치 확인
+## Cx_Oracle 설치 확인
 ```py
 # oracle
 #!conda install cx_oracle
@@ -208,7 +244,7 @@ conn.close()
 
 
 
-# Docker에서 mariadb 설치
+## Docker에서 mariadb 설치
 
 ```Bash
 #vagrant plugin install vagrant-disksize
@@ -231,7 +267,6 @@ end
 > vagrant up
 
 > vagrant ssh
-
 
 ## OS 업데이트 및 필수 패키지 설치 - linux
 $ sudo apt update
@@ -266,7 +301,7 @@ $ docker run --name mariadb-01 -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=1234 maria
 
 
 
-# MySQL 설치 확인 
+## MySQL 설치 확인 
 
 ```py
 #!conda install pymysql
