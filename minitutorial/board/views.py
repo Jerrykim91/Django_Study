@@ -3,6 +3,7 @@
 
 #from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotAllowed
+
 # Create your views here.
 
 # 모델 설계전 구상 
@@ -24,20 +25,40 @@ from django.http import HttpResponse, HttpResponseNotAllowed
 # 액션 핸들러 정의 
 
 def do_create_article(request):
+    # create 액션
     return HttpResponse(request.POST)
 
 def do_update_article(request):
+    # update 액션
     return HttpResponse(request.POST)
 
 
 # 더미 핸들러 정의 
 # create_or_update_article # 생성 및 수정하기, 수정할때는 article의 id 필요 
 def create_or_update_article(request, article_id):
-    if article_id:
-        return HttpResponse('update {}'.format(article_id))
+# 한 함수안에 두개의 메소드를 if를 가지고 정의 =>article_id의 여부에 따라
+    # 수정하기  => article_id 유
+    if article_id: 
+        if request.method == 'GET':
+            return HttpResponse('update {}'.format(article_id))
+        elif request.method == 'POST':
+            return do_create_article(request)
+        else: 
+            return HttpResponseNotAllowed(['GET','POST'])
+    # 생성하기 => article_id 무
     else: 
-        return HttpResponse('create')
+        if request.method == 'GET':
+            return HttpResponse('create')
+        elif request.method == 'POST':
+            return do_update_article(request)
+        else: 
+            return HttpResponseNotAllowed(['GET','POST'])
+# HttpResponseNotAllowed 클래스
+# HttpResponse와 다르게 status_code가 405이고 
+# 허용되지 않는 메소드로 요청했다는 의미를 가지고 있음 
+# 고로, POST 방식이므로 GET과 POST만 허용
 
+        
 # detail_article - 상세보기 
 def detail_article(request, article_id):
     return HttpResponse('detail {}'.format(article_id))
