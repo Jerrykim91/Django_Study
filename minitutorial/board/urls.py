@@ -15,7 +15,22 @@ from . import views  # 뷰에서 불러옴
 
 urlpatterns = [
     # 추가함으로서 'hello/'라는 경로 hello 핸들러가 호출
-    path('hello/<to>', views.hello , name ='hello'),       
+    path('hello/<to>', views.hello , name ='hello'),     
+
+    # 게시판 기능 경로 추가  
+    path('article/', views.list_article , name ='list_article'),       
+    path('article/<article_id>/', views.detail_article, name ='detail_article'), 
+    # create => name정의 하니까 에러 나중에 재도전
+    path('article/create/', views.create_or_update_article,{'article_id':None}),         # {'article_id':None} 필수
+    # update => name정의 하니까 에러 나중에 재도전
+    path('article/<article_id>/update/', views.create_or_update_article),       
 
 ]
 
+# create_or_update_article 핸들러에 article_id()함수의 기본값이 없기 때문에
+#  반드시 핸들러에 추가 파라미터를 {'article_id':None} 필수 입력 
+
+# http://127.0.0.1:8000/board/article/           # 'list' 출력
+# http://127.0.0.1:8000/board/article/create/    # 'detail create' 출력
+# http://127.0.0.1:8000/board/article/8/         # 'detail 8'  출력
+# http://127.0.0.1:8000/board/article/12/update/ # 'update 12' 출력

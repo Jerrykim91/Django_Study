@@ -2,7 +2,7 @@
 # => 사용자 요청을 처리하는 동작을 하는 메소드를 생성 
 
 #from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotAllowed
 # Create your views here.
 
 # 모델 설계전 구상 
@@ -21,13 +21,31 @@ from django.http import HttpResponse
 
 
 
-# 
+# 액션 핸들러 정의 
+
+def do_create_article(request):
+    return HttpResponse(request.POST)
+
+def do_update_article(request):
+    return HttpResponse(request.POST)
 
 
+# 더미 핸들러 정의 
+# create_or_update_article # 생성 및 수정하기, 수정할때는 article의 id 필요 
+def create_or_update_article(request, article_id):
+    if article_id:
+        return HttpResponse('update {}'.format(article_id))
+    else: 
+        return HttpResponse('create')
+
+# detail_article - 상세보기 
+def detail_article(request, article_id):
+    return HttpResponse('detail {}'.format(article_id))
 
 
-
-
+# list_article - 목록보기
+def list_article(request):
+    return HttpResponse('list')
 
 
 # 핸들러 선언 => 첫인자는 항상 request
