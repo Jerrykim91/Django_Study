@@ -91,10 +91,17 @@ DATABASES = {
             # oracle(admin)
             'ENGINE': 'django.db.backends.oracle',
             'NAME': 'xe', #SID
-            'USER': 'minitutorial',
+            'USER': 'admin',
             'PASSWORD' : '1234',
             'HOST' : '192.168.99.100',
             'PORT' : '32764'
+
+            # 'ENGINE': 'django.db.backends.oracle',
+            # 'NAME': 'xe', #SID
+            # 'USER': 'minitutorial',
+            # 'PASSWORD' : '1234',
+            # 'HOST' : '192.168.99.100',
+            # 'PORT' : '32764'
 
             # GDP_PROJECT
             # 'ENGINE': 'django.db.backends.oracle',
