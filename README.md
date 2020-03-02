@@ -13,7 +13,7 @@
 ## minitutorial
 
 ## New_project
-
+    - 수업 과정 외에 공부용으로 만들어서 공부하던거 
 ---
 ## 장고(Django)
 

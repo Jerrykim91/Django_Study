@@ -1,6 +1,6 @@
-## chapter03. Django 웹 프레임워크
+# chapter03. Django 웹 프레임워크
 ---
-### 장고(Django)
+## 장고(Django)
 
 - 가장 준비가 잘 되어있는 프레임워크
 - 제공하는 기능이 풍부함
@@ -8,7 +8,7 @@
 - 사용자가 많음 
 
 --- 
-### 1. 일반적인 특징 
+## 1. 일반적인 특징 
 
 1. 구성요소들 간의 긴밀한 통합 <br/>
 
@@ -74,13 +74,13 @@
 
 ---
 
-### 2. 장고 프로그램 설치 
+## 2. 장고 프로그램 설치 
     - Django_Setup.md 참조
     - 검색을 추천 
 
 ---
 
-### 3. 장고에서의 애플리케이션 개발 방식
+## 3. 장고에서의 애플리케이션 개발 방식
 
 - 웹사이트를 설계할때       
     - 가장 먼저 해야할 일      
@@ -253,25 +253,26 @@
 
 ---
 
-### 4. 애플리케이션 설계하기 
+## 4. 애플리케이션 설계하기 
 
- <화면 UI 설계>
+### <화면 UI 설계>
+
  - 템플릿 설계 
     - index.html
         - 질문 리스트를 보여줌 
     - detail.html
-        - 하나의 질문에 대해 투표 할수 있도록 답볍 항목을 폼으로 보여줌 
+        - 하나의 질문에대해 투표할 수 있도록 답볍 항목을 폼으로 보여줌 
     - results.html
         - 질문에 따른 투표 결과를 보여줌 
 
 - 테이블 설계 
- -모든 컬럼은 not-null정의, 컬럼 값이 있어야함 
+ - 모든 컬럼은 not-null정의, 컬럼 값이 있어야함 
  - pk 자동 증가 속성으로 지정 
- - Choice테이블의 question 컬럼은  Question 테이블과 연결 => index에 생성 
+ - Choice테이블의 question 컬럼은 Question 테이블과 연결 => index에 생성 
     - Question 테이블 설계 : 질문을 저장하는 테이블 
         + id - int - notnull, pk - pk
-        + question_text - char - notnull- 질문문장
-        + pub_date  -datetime - notnull- 질문 생성 시각
+        + question_text - char - notnull - 질문 문장
+        + pub_date - datetime - notnull - 질문 생성 시각
 
     - Choice 테이블 설계 : 질문별로 선택용 답변 항목을 저장하는 테이블  
         + id 
@@ -281,28 +282,28 @@
 
 ---
 
-### 5. Step01 - 프로젝트 뼈대 생성
+## 5. Step01 - 프로젝트 뼈대 생성
 
 0. 기본 구조
 
     ```py
     Django New project
         ㄴ New project
-            - 프로젝트 설계를 위한 python 패키지들 이저장    
+            - 프로젝트 설계를 위한 python 패키지들이 저장    
             ㄴ __init__.py 
                 - 디렉토리를 패키지처럼 다루라고 알려주는 파일 
-                => 이름이 중복되는것을 피하게 하는 모듈의 모음 
+                => 이름이 중복되는것을 피하게하는 모듈의 모음 
             ㄴ setting.py 
                 - 프로젝트의 환경 및 구성을 저장
-                - 환경 설정이 어떻게 동작하는지 확인
-                - 데이터베이스, 사이트 언어 설정 
+                - 환경설정이 어떻게 동작하는지 확인
+                - 데이터베이스, 사이트언어 설정 
             ㄴ urls.py
                 - 설정파일 
-                    - 현재 Django project 의 URL 선언을 저장 => 사이트의 '목차'
-                    - url주소와 장고의 기능을 연결 시켜주는 역활 
+                    - 현재 Django project의 URL 선언을 저장 => 사이트의 '목차'
+                    - url주소와 장고의 기능을 연결시켜주는 역활 
                     - 장고의 강력한 기능**
             ㄴ wsgi.py
-                - WSGI 규격으로 연동하기 위한 파일 
+                - WSGI 규격으로 연동하기위한 파일 
         ㄴ manage.py
             - 프로젝트를 관리하는 스크립트 admin.py와 코드를 공유 
     ```
@@ -333,10 +334,10 @@
             # Board 앱 생성(여러개 생성 가능)
                 $ django-admin startapp board
             # 의문사항 => 직접해보자 
-                $ django-admin.py startapp NAME  => 어플리케이션 생성 
-                $ django-admin.py startproject NAME => 프로젝트폴더 생성시에 사용
+                $ django-admin startapp NAME  => 어플리케이션 생성 
+                $ django-admin startproject NAME => 프로젝트폴더 생성시에 사용
             # Member 앱 생성
-                $ django-admin.py startapp member 
+                $ django-admin startapp member 
             # Django 서버 구동(http://127.0.0.1:8000/)
                 $ python manage.py runserver 
 
@@ -377,14 +378,22 @@
             - ```$ python manage.py runserver 0.0.0.0:8080 ```
 ---
 
-### Step02 - 애플리케이션 개발하기 - MODEL 
+## Step02 - 개발하기 - MODEL 
 
-
-
+### 1. 데이터베이스 지정 
+### 2. 테이블 정의 
+### 3. Admin 사이트에 테이블 반영 
+### 4. 데이터베이스 변경사항 반영 
+### 5. 지금까지 작업 확인하기 
 
 ---
-### Step03 - 애플리케이션 개발하기 - VIEW & TEMPLATE 
+## Step03 - 개발하기 - VIEW & TEMPLATE 
 
-
+### 1. URLconf 코딩 
+### 2. view 함수 index() 및 템플릿 작성 
+### 3. view 함수 detail() 및 폼 템플릿 작성 
+### 4. view 함수 vote() 및 리다이렉션 작성 
+### 5. view 함수 results() 및 템플릿 작성 
+### 6. 지금까지 작업 확인하기 
 
 ---

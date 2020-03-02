@@ -1,0 +1,1 @@
+https://github.com/wayhome25/django_practice/tree/master/mysite1/polls_cbv
