@@ -1,7 +1,7 @@
 # mini tutorial
 ---
 
-출처 - https://swarf00.github.io/2018/11/23/setup-project.html
+## 따라해보기[출처]( https://swarf00.github.io/2018/11/23/setup-project.html)
 
 ---
 
@@ -23,6 +23,5 @@ minitutorial/            # main root 디렉토리
         models.py        # model 파일 board의 모든 데이터를 저장할 DB를 매핑해서 모델화
         ├── tests.py     # 기능들을 test하는 기능을 구현
         └── views.py     # 요청을 처리하여 모델에 저장 / 모델에 저장된 데이터를 화면에 전달
-
 
 ```

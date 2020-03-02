@@ -1,8 +1,20 @@
 # Django_Study
+- Django_Study 복습 겸 기록
 ---
-Django_Study 복습 겸 기록
 
 
+## data
+
+## dummy
+### Python web programming with Django
+
+## GDP_project_original
+
+## minitutorial
+
+## New_project
+
+---
 ## 장고(Django)
 
 1. 구성요소들 간의 긴밀한 통합 
