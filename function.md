@@ -1,4 +1,6 @@
 # 패키지 
+---
+
 - django.shortcuts 
     - render()
         : 주어진 템플릿을 주어진 컨텍스트 사전과 결합 =>  HttpResponse렌더링 된 텍스트 가있는 객체를 반환

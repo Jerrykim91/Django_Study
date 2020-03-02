@@ -1,7 +1,5 @@
-# Django == Chapter 02
+# **Django_Chapter 02**
 ---
-# 장고(Django)_02
-
 
 ## - Index
 - 개발 환경<br/>
@@ -30,7 +28,7 @@
         - 질문에 따른 투표 결과를 보여줌 
 
 - 테이블 설계 
- -모든 컬럼은 notnull정의 , 컬럼 값이 있어야함 
+ -모든 컬럼은 not-null정의, 컬럼 값이 있어야함 
  - pk 자동 증가 속성으로 지정 
  - Choice테이블의 question 컬럼은  Question 테이블과 연결 => index에 생성 
     - Question 테이블 설계 : 질문을 저장하는 테이블 
