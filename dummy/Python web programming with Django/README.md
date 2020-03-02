@@ -9,15 +9,16 @@
 
 ## chapter04. Django의 핵심 기능
 
-## chapter09. NGINX 웹서버와 연동
-
-## chapter08. Apache 웹서버 연동
-
-## chapter07. 클라우드 서버에 장고 배포하기 
+## chapter05. 실습 예제 확장하기 
 
 ## chapter06. Django의 웹 서버 연동 원리
 
-## chapter05. 실습 예제 확장하기 
+## chapter07. 클라우드 서버에 장고 배포하기 
+
+## chapter08. Apache 웹서버 연동
+
+## chapter09. NGINX 웹서버와 연동
+
 
 ---
 
@@ -31,4 +32,6 @@
 
 ### D. 파이참 무로료 버전 사용해보기
 
-### 사용자. Django_Setup(_PC방)
+### 사용자. Django_Setup(_PC방).md
+
+### web programming with Django.md
